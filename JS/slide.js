@@ -1,5 +1,5 @@
 var $content = $('#content');
-var $title = $('<div id="logo"><h2>Airplane Image Slider</h2></div>');
+var $title = $('<div id="logo"><h2>Airplane Image Carousel</h2></div>');
 var $photoBox = $('<div id="photoBox"></div>');
 var $photo = $('<div class="picture photoClass canSee" id="photo1"></div>');
 var $arrows = $('<div id="arrows"></div>');
@@ -16,8 +16,6 @@ var $button6 = $('<div class="button" id="button6"></div>');
 $content.append($title);
 $content.append($photoBox);
 $photoBox.append($photo);
-/*    $photo.addClass('photoClass');
-$('.photoClass').append($arrows);*/
 $photo.append($arrows);
 $arrows.append($lftArrow);
 $arrows.append($rtArrow);
@@ -193,7 +191,6 @@ $button5.css({
 /* -----  Functions  ----- */
 
 var moveRt =function(){
-    $photo.removeClass('canSee').addClass('noSee');
     setButtonCol();
     if($('.picture').attr('id') == 'photo1'){
         $photo.removeAttr('id');
@@ -241,15 +238,14 @@ var moveRt =function(){
             'background-color': '#7b7b81'
         });
     }
-    $photo.removeClass('noSee').addClass('canSee');
-    
-    var $x = $photo.attr('id');
-    console.log('$photo id name is: ' + $x);
+    /*$('.picture').hide("slide",{direction: "right"},1000);*/
+    /*$('.picture').show("slide",{direction: "left"},1000);*/
+    $('.picture').hide("fade",1);
+    $('.picture').show("fade",1000);
 };
 
 var moveLft =function(){
     setButtonCol();
-    $photo.removeClass('canSee').addClass('noSee');
     if($('.picture').attr('id') == 'photo5'){
         $photo.removeAttr('id');
         $photo.attr('id','photo4');
@@ -296,7 +292,10 @@ var moveLft =function(){
             'background-color': '#7b7b81'
         });
     }
-    $photo.removeClass('noSee').addClass('canSee');
+    /*$('.picture').hide("slide",{direction: "left"},1000);
+    $('.picture').show("slide",{direction: "right"},1000);*/
+    $('.picture').hide("fade",1);
+    $('.picture').show("fade",1000);
 };
 
 var setButtonCol =function(){
@@ -305,18 +304,22 @@ var setButtonCol =function(){
         });
 };
 
+var scrollEm = function(){
+    setInterval(moveRt,10000);
+};
+
 /* -----  Function Calls  ----- */
 
 $(function(){
     
-    /*$photo.removeClass('noSee').addClass('canSee');*/
+    scrollEm();
    
     $('#rtArrow').on('click',function(){
-       moveRt(); 
+        moveRt(); 
     });
     
     $('#lftArrow').on('click',function(){
-       moveLft(); 
+        moveLft(); 
     });
     
     $('#button1').on('click',function(){
@@ -330,6 +333,8 @@ $(function(){
         $('#photo1').css({
             'background-image': 'url(../IMAGES/F5E.jpg)'
         });
+        $('.picture').hide("fade",1);
+        $('.picture').show("fade",1000);
         $photo.removeClass('noSee').addClass('canSee');
     });
     
@@ -344,6 +349,8 @@ $(function(){
         $('#photo2').css({
             'background-image': 'url(../IMAGES/supercobra.jpg)'
         });
+        $('.picture').hide("fade",1);
+        $('.picture').show("fade",1000);
         $photo.removeClass('noSee').addClass('canSee');
     });
     
@@ -358,6 +365,8 @@ $(function(){
         $('#photo3').css({
             'background-image': 'url(../IMAGES/B29.jpg)'
         });
+        $('.picture').hide("fade",1);
+        $('.picture').show("fade",1000);
         $photo.removeClass('noSee').addClass('canSee');
     });
     
@@ -372,6 +381,8 @@ $(function(){
         $('#photo4').css({
             'background-image': 'url(../IMAGES/F18A.jpg)'
         });
+        $('.picture').hide("fade",1);
+        $('.picture').show("fade",1000);
         $photo.removeClass('noSee').addClass('canSee');
     });
     
@@ -386,6 +397,8 @@ $(function(){
         $('#photo5').css({
             'background-image': 'url(../IMAGES/V22.jpg)'
         });
+        $('.picture').hide("fade",1);
+        $('.picture').show("fade",1000);
         $photo.removeClass('noSee').addClass('canSee');
     });
     
