@@ -1,42 +1,26 @@
 var $content = $('#content');
 var $title = $('<div id="logo"><h2>Airplane Image Slider</h2></div>');
-var $photoBox = $('<div id="tabs"></div>');
-var $photo1 = $('<div id="photo1"></div>');
-var $photo2 = $('<div id="photo2"></div>');
-var $photo3 = $('<div id="photo3"></div>');
-var $photo4 = $('<div id="photo4"></div>');
-var $photo5 = $('<div id="photo5"></div>');
-var $photo6 = $('<div id="photo6"></div>');
-var $arrows = $('div id="arrows"></div>');
-var $lftArrow = $('div id="lft_arrow"></div>');
-var $rtArrow = $('div id="rt_arrow"></div>');
+var $photoBox = $('<div id="photoBox"></div>');
+var $photo = $('<div class="picture photoClass canSee" id="photo1"></div>');
+var $arrows = $('<div id="arrows"></div>');
+var $lftArrow = $('<div id="lftArrow"></div>');
+var $rtArrow = $('<div id="rtArrow"></div>');
 var $scrollButtons = $('<div id="scrollButtons"></div>');
-var $button1 = $('<div id="button1"></div>');
-var $button2 = $('<div id="button2"></div>');
-var $button3 = $('<div id="button3"></div>');
-var $button4 = $('<div id="button4"></div>');
-var $button5 = $('<div id="button5"></div>');
-var $button6 = $('<div id="button6"></div>');
-var $article1 = $('<div id="article1"></div>');
-var $story = $('<p id="story">blah blah blah</p>');
+var $button1 = $('<div class="button" id="button1"></div>');
+var $button2 = $('<div class="button" id="button2"></div>');
+var $button3 = $('<div class="button" id="button3"></div>');
+var $button4 = $('<div class="button" id="button4"></div>');
+var $button5 = $('<div class="button" id="button5"></div>');
+var $button6 = $('<div class="button" id="button6"></div>');
 
 $content.append($title);
 $content.append($photoBox);
-$photoBox.append($photo1);
-    $photo1.addClass('tabclass');
-$photoBox.append($photo2);
-    $photo2.addClass('tabclass');
-$photoBox.append($photo3);
-    $photo3.addClass('tabclass');
-$photoBox.append($photo4);
-    $photo4.addClass('tabclass');
-$photoBox.append($photo5);
-    $photo5.addClass('tabclass');
-$photoBox.append($photo6);
-    $photo6.addClass('tabclass');
-$photoBox.append($arrows);
-$arrows.append($lft_arrow);
-$arrows.append($rt_arrow);
+$photoBox.append($photo);
+/*    $photo.addClass('photoClass');
+$('.photoClass').append($arrows);*/
+$photo.append($arrows);
+$arrows.append($lftArrow);
+$arrows.append($rtArrow);
 
 $content.append($scrollButtons);
 $scrollButtons.append($button1);
@@ -44,73 +28,365 @@ $scrollButtons.append($button2);
 $scrollButtons.append($button3);
 $scrollButtons.append($button4);
 $scrollButtons.append($button5);
-$scrollButtons.append($button6);
 
-$content.append($article1);
-$article1.append($story);
+/* -----  CSS  ----- */
 
 $content.css({
     'width': '100%',
-    'height': '900px',
-    'background-image': 'url(../IMAGES/WAFB.jpg)',
+    'height': '680px',
+    'background-image': 'url(../IMAGES/airport.jpg)',
     'background-repeat': 'no-repeat',
     'background-position': 'center',
     'background-size': 'cover',
-    'border-bottom': '3px solid #f00'
+    'border': '3px solid #454040'
+});
+
+$title.css({
+    'position': 'relative',
+    'width': '60%',
+    'margin': '-35px auto 10px auto',
+    'padding-top': '20px',
+    'text-align': 'center',
+    'font-family': '"Poiret One", cursive',
+    'font-size': '28px',
+    'font-weight': '900'
 });
 
 $photoBox.css({
-    'position': 'fixed',
-    'width': '100%',
-    'height': '50px',
-    'left': '220px',
-    'top': '225px'
-});
-
-$('.tabclass').css({
-    'display': 'inline-block',
     'position': 'relative',
-    'left': '-180px',
-    'font-size': '24px',
-    'font-weight': '900',
-    'padding-top': '15px',
-    'padding-bottom': '3px',
-    'padding-left': '15px',
-    'padding-right': '15px',
-    'margin-right': '-1%',
-    'border-top-left-radius': '50px',
-    'border-top-right-radius': '15px'
+    'width': '610px',
+    'height': '460px',
+    'margin': '20px auto 10px auto',
+    'border-radius': '10px',
+    'border': '5px solid #7b7b81'
 });
 
-$photo1.css({
-    'background-color': '#f00',
-    'border': '2px solid #f00'
+$('.canSee').css({
+    'display': 'inline-block'
 });
 
-$photo2.css({
-    
+$('.noSee').css({
+    'display': 'none'
 });
 
-$photo3.css({
-    
+$('.photoClass').css({
+    /*'display': 'inline-block',*/
+    'position': 'relative',
+    'width': '600px',
+    'height': '450px',
+    'border-radius': '5px',
+    'background-repeat': 'no-repeat',
+    'background-position': 'center',
+    'background-size': 'cover'
 });
 
-$photo4.css({
-    
+$arrows.css({
+    'position': 'relative',
+    'width': '100%',
+    'height': '30px',
+    'margin-top': '215px'
 });
 
-$photo5.css({
-    
+$lftArrow.css({
+    'position': 'relative',
+    'width': '30px',
+    'height': '30px',
+    'margin-left': '10px',
+    'background-image': 'url(../IMAGES/lftArrow.png)',
+    'background-repeat': 'no-repeat',
+    'background-position': 'center',
+    'background-size': 'cover',
+    'float': 'left'
 });
 
-$photo6.css({
-    
+$rtArrow.css({
+    'position': 'relative',
+    'width': '30px',
+    'height': '30px',
+    'margin-right': '10px',
+    'background-image': 'url(../IMAGES/rtArrow.png)',
+    'background-repeat': 'no-repeat',
+    'background-position': 'center',
+    'background-size': 'cover',
+    'float': 'right'
+});
+
+$('#photo1').css({
+    'background-image': 'url(../IMAGES/F5E.jpg)'
 });
 
 $scrollButtons.css({
-    'position': 'fixed',
-    'width': '100%',
-    'height': '250px',
-    'top': '296px',
-    'left': '80px'
-})
+    'position': 'relative',
+    'margin': '-5px auto 10px auto',
+    'width': '400px',
+    'height': '50px',
+    'background-color': '#3c3c41',
+    'border': '3px solid #7b7b81',
+    'border-radius': '25px'
+});
+
+$button1.css({
+    'position': 'relative',
+    'margin-top': '17px',
+    'margin-left': '34px',
+    'margin-right': '34px',
+    'width': '10px',
+    'height': '10px',
+    'background-color': '#7b7b81',
+    'border': '2px solid #7b7b81',
+    'border-radius': '5px',
+    'float': 'left'
+});
+
+$button2.css({
+    'position': 'relative',
+    'margin-top': '17px',
+    'margin-left': '34px',
+    'margin-right': '34px',
+    'width': '10px',
+    'height': '10px',
+    'background-color': '#fff',
+    'border': '2px solid #7b7b81',
+    'border-radius': '5px',
+    'float': 'left'
+});
+
+$button3.css({
+    'position': 'relative',
+    'margin-top': '17px',
+    'margin-left': '34px',
+    'margin-right': '34px',
+    'width': '10px',
+    'height': '10px',
+    'background-color': '#fff',
+    'border': '2px solid #7b7b81',
+    'border-radius': '5px',
+    'float': 'left'
+});
+
+$button4.css({
+    'position': 'relative',
+    'margin-top': '17px',
+    'margin-left': '34px',
+    'margin-right': '34px',
+    'width': '10px',
+    'height': '10px',
+    'background-color': '#fff',
+    'border': '2px solid #7b7b81',
+    'border-radius': '5px',
+    'float': 'left'
+});
+
+$button5.css({
+    'position': 'relative',
+    'margin-top': '17px',
+    'margin-left': '34px',
+    'margin-right': '34px',
+    'width': '10px',
+    'height': '10px',
+    'background-color': '#fff',
+    'border': '2px solid #7b7b81',
+    'border-radius': '5px',
+    'float': 'left'
+});
+
+/* -----  Functions  ----- */
+
+var moveRt =function(){
+    $photo.removeClass('canSee').addClass('noSee');
+    setButtonCol();
+    if($('.picture').attr('id') == 'photo1'){
+        $photo.removeAttr('id');
+        $photo.attr('id','photo2');
+        $('#photo2').css({
+            'background-image': 'url(../IMAGES/supercobra.jpg)'
+        });
+        $('#button2').css({
+            'background-color': '#7b7b81'
+        });
+    } else if ($('.picture').attr('id') == 'photo2'){
+        $photo.removeAttr('id');
+        $photo.attr('id','photo3');
+        $('#photo3').css({
+            'background-image': 'url(../IMAGES/B29.jpg)'
+        });
+        $('#button3').css({
+            'background-color': '#7b7b81'
+        });
+    } else if ($('.picture').attr('id') == 'photo3'){
+        $photo.removeAttr('id');
+        $photo.attr('id','photo4');
+        $('#photo4').css({
+            'background-image': 'url(../IMAGES/F18A.jpg)'
+        });
+        $('#button4').css({
+            'background-color': '#7b7b81'
+        });
+    } else if ($('.picture').attr('id') == 'photo4'){
+        $photo.removeAttr('id');
+        $photo.attr('id','photo5');
+        $('#photo5').css({
+            'background-image': 'url(../IMAGES/V22.jpg)'
+        });
+        $('#button5').css({
+            'background-color': '#7b7b81'
+        });
+    } else {
+        $photo.removeAttr('id');
+        $photo.attr('id','photo1');
+        $('#photo1').css({
+            'background-image': 'url(../IMAGES/F5E.jpg)'
+        });
+        $('#button1').css({
+            'background-color': '#7b7b81'
+        });
+    }
+    $photo.removeClass('noSee').addClass('canSee');
+    
+    var $x = $photo.attr('id');
+    console.log('$photo id name is: ' + $x);
+};
+
+var moveLft =function(){
+    setButtonCol();
+    $photo.removeClass('canSee').addClass('noSee');
+    if($('.picture').attr('id') == 'photo5'){
+        $photo.removeAttr('id');
+        $photo.attr('id','photo4');
+        $('#photo4').css({
+            'background-image': 'url(../IMAGES/F18A.jpg)'
+        });
+        $('#button4').css({
+            'background-color': '#7b7b81'
+        });
+    } else if ($('.picture').attr('id') == 'photo4'){
+        $photo.removeAttr('id');
+        $photo.attr('id','photo3');
+        $('#photo3').css({
+            'background-image': 'url(../IMAGES/B29.jpg)'
+        });
+        $('#button3').css({
+            'background-color': '#7b7b81'
+        });
+    } else if ($('.picture').attr('id') == 'photo3'){
+        $photo.removeAttr('id');
+        $photo.attr('id','photo2');
+        $('#photo2').css({
+            'background-image': 'url(../IMAGES/supercobra.jpg)'
+        });
+        $('#button2').css({
+            'background-color': '#7b7b81'
+        });
+    } else if ($('.picture').attr('id') == 'photo2'){
+        $photo.removeAttr('id');
+        $photo.attr('id','photo1');
+        $('#photo1').css({
+            'background-image': 'url(../IMAGES/F5E.jpg)'
+        });
+        $('#button1').css({
+            'background-color': '#7b7b81'
+        });
+    } else {
+        $photo.removeAttr('id');
+        $photo.attr('id','photo5');
+        $('#photo5').css({
+            'background-image': 'url(../IMAGES/V22.jpg)'
+        });
+        $('#button5').css({
+            'background-color': '#7b7b81'
+        });
+    }
+    $photo.removeClass('noSee').addClass('canSee');
+};
+
+var setButtonCol =function(){
+    $('.button').css({
+            'background-color': '#fff'
+        });
+};
+
+/* -----  Function Calls  ----- */
+
+$(function(){
+    
+    /*$photo.removeClass('noSee').addClass('canSee');*/
+   
+    $('#rtArrow').on('click',function(){
+       moveRt(); 
+    });
+    
+    $('#lftArrow').on('click',function(){
+       moveLft(); 
+    });
+    
+    $('#button1').on('click',function(){
+        setButtonCol();
+        $('#button1').css({
+            'background-color': '#7b7b81'
+        });
+        $photo.removeClass('canSee').addClass('noSee');
+        $photo.removeAttr('id');
+        $photo.attr('id','photo1');
+        $('#photo1').css({
+            'background-image': 'url(../IMAGES/F5E.jpg)'
+        });
+        $photo.removeClass('noSee').addClass('canSee');
+    });
+    
+    $('#button2').on('click',function(){
+        setButtonCol();
+        $('#button2').css({
+            'background-color': '#7b7b81'
+        });
+        $photo.removeClass('canSee').addClass('noSee');
+        $photo.removeAttr('id');
+        $photo.attr('id','photo2');
+        $('#photo2').css({
+            'background-image': 'url(../IMAGES/supercobra.jpg)'
+        });
+        $photo.removeClass('noSee').addClass('canSee');
+    });
+    
+    $('#button3').on('click',function(){
+        setButtonCol();
+        $('#button3').css({
+            'background-color': '#7b7b81'
+        });
+        $photo.removeClass('canSee').addClass('noSee');
+        $photo.removeAttr('id');
+        $photo.attr('id','photo3');
+        $('#photo3').css({
+            'background-image': 'url(../IMAGES/B29.jpg)'
+        });
+        $photo.removeClass('noSee').addClass('canSee');
+    });
+    
+    $('#button4').on('click',function(){
+        setButtonCol();
+        $('#button4').css({
+            'background-color': '#7b7b81'
+        });
+        $photo.removeClass('canSee').addClass('noSee');
+        $photo.removeAttr('id');
+        $photo.attr('id','photo4');
+        $('#photo4').css({
+            'background-image': 'url(../IMAGES/F18A.jpg)'
+        });
+        $photo.removeClass('noSee').addClass('canSee');
+    });
+    
+    $('#button5').on('click',function(){
+        setButtonCol();
+        $('#button5').css({
+            'background-color': '#7b7b81'
+        });
+        $photo.removeClass('canSee').addClass('noSee');
+        $photo.removeAttr('id');
+        $photo.attr('id','photo5');
+        $('#photo5').css({
+            'background-image': 'url(../IMAGES/V22.jpg)'
+        });
+        $photo.removeClass('noSee').addClass('canSee');
+    });
+    
+});
