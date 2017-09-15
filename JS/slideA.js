@@ -1,10 +1,10 @@
 var $content = $('#content');
 var $title = $('<div id="logo"><h2>Airplane Image Carousel</h2></div>');
 var $photoBox = $('<div id="photoBox"></div>');
-var $photo = $('<div class="picture photoClass canSee" id="photo1"></div>');
+var $photo = $('<div class="picture photoClass canSee" id="photo1"><img src="../IMAGES/supercobra.jpg" width="600" height="450" id="ncx" /></div>');
 var $arrows = $('<div id="arrows"></div>');
-var $lftArrow = $('<div id="lftArrow"></div>');
-var $rtArrow = $('<div id="rtArrow"></div>');
+var $lftArrow = $('<div id="lftArrow"><img src="../IMAGES/lftArrow.png" width="30" height="30" id="leftA /></div>');
+var $rtArrow = $('<div id="rtArrow"><img src="../IMAGES/rtArrow.png" width="30" height="30" id="rightA /></div>');
 var $scrollButtons = $('<div id="scrollButtons"></div>');
 var $button1 = $('<div class="button" id="button1"></div>');
 var $button2 = $('<div class="button" id="button2"></div>');
@@ -16,7 +16,8 @@ var $button6 = $('<div class="button" id="button6"></div>');
 $content.append($title);
 $content.append($photoBox);
 $photoBox.append($photo);
-$photo.append($arrows);
+/*$photo.append($arrows);*/
+$content.append($arrows);
 $arrows.append($lftArrow);
 $arrows.append($rtArrow);
 
@@ -51,6 +52,7 @@ $title.css({
 });
 
 $photoBox.css({
+    'z-index': '5',
     'position': 'relative',
     'width': '610px',
     'height': '460px',
@@ -79,13 +81,15 @@ $('.photoClass').css({
 });
 
 $arrows.css({
+    'z-index': '6',
     'position': 'relative',
-    'width': '100%',
+    'width': '75%',
     'height': '30px',
-    'margin-top': '215px'
+    'margin': '-250px auto 0 auto'
 });
 
 $lftArrow.css({
+    'z-index': '7',
     'position': 'relative',
     'width': '30px',
     'height': '30px',
@@ -98,6 +102,7 @@ $lftArrow.css({
 });
 
 $rtArrow.css({
+    'z-index': '7',
     'position': 'relative',
     'width': '30px',
     'height': '30px',
@@ -190,6 +195,17 @@ $button5.css({
 
 /* -----  Functions  ----- */
 
+var moveRtA =function(){
+    setButtonCol();
+    if($('.picture').attr('id') == 'photo1'){
+        $photo = $('<div class="picture photoClass canSee" id="photo1"><img src="../IMAGES/B29.jpg" width="600" height="450" id="ncx" /></div>');
+        $('.picture').slideDown(2500);
+        $('#button2').css({
+            'background-color': '#7b7b81'
+        });
+    } 
+};
+
 var moveRt =function(){
     setButtonCol();
     if($('.picture').attr('id') == 'photo1'){
@@ -198,6 +214,7 @@ var moveRt =function(){
         $('#photo2').css({
             'background-image': 'url(../IMAGES/supercobra.jpg)'
         });
+        $('#photo2').slideDown(2500);
         $('#button2').css({
             'background-color': '#7b7b81'
         });
@@ -207,6 +224,7 @@ var moveRt =function(){
         $('#photo3').css({
             'background-image': 'url(../IMAGES/B29.jpg)'
         });
+        $('#photo3').slideDown(2500);
         $('#button3').css({
             'background-color': '#7b7b81'
         });
@@ -216,6 +234,7 @@ var moveRt =function(){
         $('#photo4').css({
             'background-image': 'url(../IMAGES/F18A.jpg)'
         });
+        $('#photo4').slideDown(2500);
         $('#button4').css({
             'background-color': '#7b7b81'
         });
@@ -225,6 +244,7 @@ var moveRt =function(){
         $('#photo5').css({
             'background-image': 'url(../IMAGES/V22.jpg)'
         });
+        $('#photo5').slideDown(2500);
         $('#button5').css({
             'background-color': '#7b7b81'
         });
@@ -234,17 +254,18 @@ var moveRt =function(){
         $('#photo1').css({
             'background-image': 'url(../IMAGES/F5E.jpg)'
         });
+        $('#photo1').slideDown(2500);
         $('#button1').css({
             'background-color': '#7b7b81'
         });
     }
     /*$('.picture').hide("slide",{direction: "right"},1000);*/
-    /*$('.picture').show("slide",{direction: "left"},1000);
-    $('.picture').hide("fade",1);
-    $('.picture').show("fade",1000);*/
+    /*$('.picture').show("slide",{direction: "left"},1000);*/
     
-    /*$('.picture').slideUp(1000);*/
-    $('.picture').slideDown(1000);
+    /*$('.picture').hide("fade",1);
+    $('.picture').show("fade",1000);
+    
+    $('.picture').slideDown(2500);*/
 };
 
 var moveLft =function(){
@@ -317,9 +338,9 @@ $(function(){
     
     /*scrollEm();*/
    
-    $('#rtArrow').on('click',function(){
-        $('.picture').slideUp(1000);
-        moveRt(); 
+    $('#rightA').on('click',function(){
+        /*moveRt();*/
+        moveRtA();
     });
     
     $('#lftArrow').on('click',function(){
