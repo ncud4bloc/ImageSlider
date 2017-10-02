@@ -1,8 +1,10 @@
 var boxWidth = ($(window).width() - 610)/2;
+var timeout;
 
 var moveRt =function(){
     var slideLeft = '100%';
     var animateLeft = '-100%';
+    scrollEm();
     setButtonCol();
     if($('.active').attr('id') == 'xf5'){
         $('#xb29').css({left: slideLeft, display: 'block'});
@@ -70,6 +72,7 @@ var moveRt =function(){
 var moveLft =function(){
     var slideLeft = '-100%';
     var animateLeft = '100%';
+    scrollEm();
     setButtonCol();
     if($('.active').attr('id') == 'xf5'){
         $('#xv22').css({left: slideLeft, display: 'block'});
@@ -140,8 +143,9 @@ var setButtonCol =function(){
         });
 };
 
-var scrollEm = function(){
-    setInterval(moveRt,10000);
+function scrollEm(){
+    clearTimeout(timeout);
+    timeout = setInterval(moveRt,5000);
 };
 
 /* -----  Function Calls  ----- */
@@ -150,7 +154,7 @@ var scrollEm = function(){
 
 $(function(){
     
-    /*scrollEm();*/
+    scrollEm();
    
     $('#rtArrow').on('click',function(){
         moveRt();
