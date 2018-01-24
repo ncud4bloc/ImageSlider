@@ -1,7 +1,3 @@
-# ImageSlider
-JQuery UI demo for Odin Project
+Odin Project work: JQuery UI demo
 
-Future upgrades and refactoring are planned. I currently switch pictures by changing the background image for the single 
-photo div. I will change this by making multiple photo divs all with display: none except for the active. This will allow 
-me to use the slide method instead of the fade method. Also plan on tying the default scroll timing into the click 
-functionality, as they are currently independent and can interfere with each other.
+Slide images left or right using ARROWs or transition to a particular image by clicking on the small buttons. This uses a different transition than the arrows. Automatically slides to a new image after 5 seconds. Not responsive.
